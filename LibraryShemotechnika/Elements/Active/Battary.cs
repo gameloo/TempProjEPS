@@ -10,6 +10,5 @@ namespace LibraryShemotechnika.Elements
     {
         public double Voltage { get; set; }
 
-        public List<IElementBase> ConnectedElements { get; set; }
     }
 }

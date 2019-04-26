@@ -47,9 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Elements\Active\Battary.cs" />
-    <Compile Include="Elements\Interfaces\IElement.cs" />
-    <Compile Include="Elements\Interfaces\IElement2C.cs" />
+    <Compile Include="Elements\Exceptions\PinAlreadyUsedException.cs" />
+    <Compile Include="Elements\Interfaces\IElementBase.cs" />
     <Compile Include="Elements\Other\DirectionAmperage.cs" />
+    <Compile Include="Elements\Other\Pin.cs" />
     <Compile Include="Elements\Passive\Branch.cs" />
     <Compile Include="Elements\Passive\Node.cs" />
     <Compile Include="Elements\Passive\Resistor.cs" />

@@ -1,5 +1,6 @@
-﻿using LibraryShemotechnika.Elements.Interfaces;
+﻿using LibraryShemotechnika.Elements.Other;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,40 +8,14 @@ using System.Threading.Tasks;
 
 namespace LibraryShemotechnika.Elements
 {
-    public class Resistor : IElement2C
+    public class Resistor : IElementBase
     {
         public string TESTSTRING { get; set; }
+        public List<Pin> Pins { get; private set; }
 
-        public List<IElementBase> ConnectedElements { get; set; }
-        public IElementBase ConnectedElementOnInput
-        {
-            get
-            {
-                return ConnectedElements[0];
-            }
-            set
-            {
-                ConnectedElements[0] = value;
-            }
-        }
-        public IElementBase ConnectedElementOnOutput
-        {
-            get
-            {
-                return ConnectedElements[1];
-            }
-            set
-            {
-                ConnectedElements[1] = value;
-            }
-        }
-
-        public double Resistance { get; set; }
         public Resistor()
         {
-            ConnectedElements = new List<IElementBase>();
-            ConnectedElements.AddRange(new IElementBase[]{ null, null });
+            Pins = new List<Pin>(2) { new Pin(this), new Pin(this) };          
         }
-
     }
 }

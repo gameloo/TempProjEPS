@@ -7,16 +7,12 @@ using System.Threading.Tasks;
 namespace LibraryShemotechnika.Elements.Other
 {
     public class Node: IElementBase
-    {
-        public List<Branch> Branches { get; set; }
-
-        public List<IElementBase> ConnectedElements { get; set; }
-
-        public SubscribeOnDisconnect SubscribeOnDisconnect { get; set; }
-
+    {    
         public Node()
         {
-            ConnectedElements = new List<IElementBase>();
+            
         }
+
+        public List<Pin> Pins => throw new NotImplementedException();
     }
 }

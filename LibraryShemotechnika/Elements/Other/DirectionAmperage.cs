@@ -7,22 +7,10 @@ using System.Threading.Tasks;
 namespace LibraryShemotechnika.Elements.Other
 {
 
-    public enum Direction
+    public enum DirectionAmperage
     {
         Unknown,
         Towards,         // Навстречу
         From        // От
-    }
-    public class DirectionAmperage
-    {
-        public IElementBase InputApmerageElement { get; set; }
-        public IElementBase OutputApmerageElement { get; set; }
-
-        public Direction GetDirectionAmperage(IElementBase element) // Надо пересмотреть поиск элемента
-        {
-            if (InputApmerageElement.Equals(element)) return Direction.Towards;
-            if (OutputApmerageElement.Equals(element)) return Direction.From;
-            return Direction.Unknown;
-        }
     }
 }

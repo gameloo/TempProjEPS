@@ -9,7 +9,6 @@ using MathNet.Numerics;
 using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Solvers;
 using MathNet.Numerics.LinearAlgebra.Double.Solvers;
-using LibraryShemotechnika.Elements.Interfaces;
 using LibraryShemotechnika.Elements.Other;
 
 namespace LibraryShemotechnika
@@ -25,17 +24,9 @@ namespace LibraryShemotechnika
             var resistor_3 = new Resistor() { TESTSTRING = "R3" };
             var resistor_4 = new Resistor() { TESTSTRING = "R4" };
 
-            resistor_1.CleatOutputConnectWithElement(resistor_2);
-            resistor_2.CleatOutputConnectWithElement(resistor_3);
-            resistor_3.CleatOutputConnectWithElement(resistor_1);
-            resistor_4.CleatOutputConnectWithElement(resistor_1);
-            resistor_4.CleatInputConnectWithElement(resistor_2);
-            resistor_4.Disconnect(resistor_2);
-            resistor_4.CleatInputConnectWithElement(resistor_2);
-
-            var node_1 = new Node();
-            resistor_1.CleatOutputConnectWithElement(node_1);
-            node_1.Disconnect(resistor_1);
+            resistor_1.Pins[0].ConnectToPin(resistor_2.Pins[1]);
+            resistor_1.Pins[0].Disconnect();
+            resistor_1.Pins[1].Disconnect();
         }
 
 
