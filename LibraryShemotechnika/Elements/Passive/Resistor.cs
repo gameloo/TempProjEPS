@@ -17,5 +17,13 @@ namespace LibraryShemotechnika.Elements
         {
             Pins = new List<Pin>(2) { new Pin(this), new Pin(this) };          
         }
+
+        public Pin this[int index]
+        {
+            get
+            {
+                return Pins[index];
+            }
+        }
     }
 }

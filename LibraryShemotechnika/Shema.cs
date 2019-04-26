@@ -23,10 +23,12 @@ namespace LibraryShemotechnika
             var resistor_2 = new Resistor() { TESTSTRING = "R2" };
             var resistor_3 = new Resistor() { TESTSTRING = "R3" };
             var resistor_4 = new Resistor() { TESTSTRING = "R4" };
+            var node_1 = new Node();
 
             resistor_1.Pins[0].ConnectToPin(resistor_2.Pins[1]);
-            resistor_1.Pins[0].Disconnect();
-            resistor_1.Pins[1].Disconnect();
+            node_1.Connect(resistor_3.Pins[0]);
+            node_1.Disconnect(resistor_3);
+            resistor_1[0].Disconnect();
         }
 
 

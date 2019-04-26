@@ -12,7 +12,7 @@ namespace LibraryShemotechnika.Elements.Other
         public IElementBase Element { get; private set; }
         public Pin ConnectedPin { get; private set; }
 
-        public Pin (IElementBase element)
+        public Pin(IElementBase element)
         {
             Element = element;
         }
@@ -34,7 +34,8 @@ namespace LibraryShemotechnika.Elements.Other
         }
         public void Disconnect()
         {
-            if (!IsRecursion) ConnectedPin?.Disconnect();
+            if (ConnectedPin != null)
+                if (!IsRecursion) ConnectedPin.Disconnect();
             ConnectedPin = null;
         }
 

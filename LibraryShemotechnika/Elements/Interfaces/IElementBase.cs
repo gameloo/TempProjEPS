@@ -15,6 +15,6 @@ namespace LibraryShemotechnika.Elements
 
     public static class IElementBaseExtend
     {
-       
+        
     }
 }
