@@ -46,15 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Elements\Active\ACGenerator.cs" />
     <Compile Include="Elements\Active\Battary.cs" />
     <Compile Include="Elements\Active\IVS.cs" />
     <Compile Include="Elements\Exceptions\PinAlreadyUsedException.cs" />
     <Compile Include="Elements\Interfaces\IElementBase.cs" />
     <Compile Include="Elements\Other\DirectionAmperage.cs" />
     <Compile Include="Elements\Other\Pin.cs" />
-    <Compile Include="Elements\Passive\Branch.cs" />
+    <Compile Include="Elements\Other\Branch.cs" />
+    <Compile Include="Elements\Passive\InductanceCoil.cs" />
     <Compile Include="Elements\Passive\Node.cs" />
     <Compile Include="Elements\Passive\Resistor.cs" />
+    <Compile Include="Elements\Passive\Сapacitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shema.cs" />
     <Compile Include="UtilityClass\Matrix.cs" />

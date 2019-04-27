@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryShemotechnika.Elements.Other
+namespace LibraryShemotechnika.Elements.Passive
 {
-   
-    public class Branch     // Ветвь
+    public class Сapacitor
     {
-        
     }
 }

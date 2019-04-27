@@ -8,6 +8,9 @@ namespace LibraryShemotechnika.Elements.Other
 {
     public class Node : IElementBase
     {
+
+        public string Node_name { get; set; }
+
         public List<Pin> Pins { get; private set; }
 
         public Node()
@@ -25,7 +28,7 @@ namespace LibraryShemotechnika.Elements.Other
 
         public void Connect(Pin pin)
         {
-            var unconnectedPin = Pins.First(i => i.ConnectedPin == null);
+            var unconnectedPin = Pins.FirstOrDefault(i => i.ConnectedPin == null);
             if (unconnectedPin != null)
             {
                 unconnectedPin.ConnectToPin(pin);
