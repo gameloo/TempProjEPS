@@ -10,7 +10,13 @@ namespace LibraryShemotechnika.Elements.Other
     public enum DirectionAmperage
     {
         Unknown,
-        Towards,         // Навстречу
+        /// <summary>
+        /// Навстречу
+        /// </summary>
+        Towards,    // Навстречу
+        /// <summary>
+        /// От
+        /// </summary>
         From        // От
     }
 }

@@ -10,6 +10,7 @@ using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.LinearAlgebra.Solvers;
 using MathNet.Numerics.LinearAlgebra.Double.Solvers;
 using LibraryShemotechnika.Elements.Other;
+using LibraryShemotechnika.Elements.Active;
 
 namespace LibraryShemotechnika
 {
@@ -26,14 +27,14 @@ namespace LibraryShemotechnika
             var resistor_5 = new Resistor() { TESTSTRING = "R5" };
             var resistor_6 = new Resistor() { TESTSTRING = "R6" };
             var resistor_7 = new Resistor() { TESTSTRING = "R7" };
-            var resistor_8 = new Resistor() { TESTSTRING = "R8" };
+            var ivs_1 = new IVS();
             var node_1 = new Node() { Node_name = "Node_1" };
             var node_2 = new Node() { Node_name = "Node_2" };
             var node_3 = new Node() { Node_name = "Node_3" };
             var node_4 = new Node() { Node_name = "Node_4" };
 
-            resistor_8[1].ConnectToPin(resistor_1[0]);
-            node_1.Connect(resistor_8[0]);
+            ivs_1[1].ConnectToPin(resistor_1[0]);
+            node_1.Connect(ivs_1[0]);
             node_1.Connect(resistor_6[0]);
             node_1.Connect(resistor_7[0]);
 

@@ -45,5 +45,6 @@ namespace LibraryShemotechnika.Elements.Other
         {
             Pins.First(i => i.ConnectedPin.Element.Equals(element))?.Disconnect();
         }
+
     }
 }

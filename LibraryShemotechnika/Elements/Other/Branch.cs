@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryShemotechnika.Elements.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,18 @@ using System.Threading.Tasks;
 
 namespace LibraryShemotechnika.Elements.Other
 {
-   
+
+    internal enum Direction
+    {
+        N1toN2,
+        N2toN1
+    }
+
     public class Branch     // Ветвь
     {
-        
-
         public Node Node_1 { get; set; }
         public Node Node_2 { get; set; }
+        private Direction Direction { get; set; } = Direction.N2toN1;
 
         List<IElementBase> Elements { get; set; }
 
@@ -25,6 +31,34 @@ namespace LibraryShemotechnika.Elements.Other
         public void Add(IElementBase element)
         {
             Elements.Add(element);
+            if (element is IActiveElement)
+            {
+                Direction = FindDirection(element);
+            }
+        }
+
+        private Direction FindDirection(IElementBase element)
+        {
+            if (element is Node)
+            {
+                if (element.Equals(Node_1)) return Direction.N1toN2;
+                else return Direction.N2toN1;
+            }
+            else return FindDirection(element.Pins[0].ConnectedPin.Element);
+        }
+
+        public DirectionAmperage DirectionAmperage(Node node)
+        {
+            if (node.Equals(Node_1))
+            {
+                if (Direction == Direction.N1toN2) return Other.DirectionAmperage.From;
+                else return Other.DirectionAmperage.Towards;
+            }
+            else
+            {
+                if (Direction == Direction.N2toN1) return Other.DirectionAmperage.From;
+                else return Other.DirectionAmperage.Towards;
+            }
         }
     }
 }
