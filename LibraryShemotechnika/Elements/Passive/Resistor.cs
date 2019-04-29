@@ -1,4 +1,5 @@
-﻿using LibraryShemotechnika.Elements.Other;
+﻿using LibraryShemotechnika.Elements.Interfaces;
+using LibraryShemotechnika.Elements.Other;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,10 +9,19 @@ using System.Threading.Tasks;
 
 namespace LibraryShemotechnika.Elements
 {
-    public class Resistor : IElementBase
+    public class Resistor : IPassiveElement
     {
         public string TESTSTRING { get; set; }
         public List<Pin> Pins { get; private set; }
+
+        public double R { get; set; } = 1;
+        public double G
+        {
+            get
+            {
+                return 1 / R;
+            }
+        }
 
         public Resistor()
         {

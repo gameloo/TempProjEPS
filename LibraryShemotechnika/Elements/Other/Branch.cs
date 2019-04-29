@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace LibraryShemotechnika.Elements.Other
 {
 
-    internal enum Direction
+    public enum Direction
     {
         N1toN2,
         N2toN1
@@ -18,9 +18,9 @@ namespace LibraryShemotechnika.Elements.Other
     {
         public Node Node_1 { get; set; }
         public Node Node_2 { get; set; }
-        private Direction Direction { get; set; } = Direction.N2toN1;
+        public Direction Direction { get; set; } = Direction.N2toN1;
 
-        List<IElementBase> Elements { get; set; }
+        public List<IElementBase> Elements { get; set; }
 
         public Branch(Node node)
         {

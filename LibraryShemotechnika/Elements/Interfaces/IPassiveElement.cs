@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace LibraryShemotechnika.Elements.Interfaces
 {
-    public interface IActiveElement : IElementBase
+    public interface IPassiveElement: IElementBase
     {
-        double E { get; }
+        double G { get; }
     }
 }

@@ -11,6 +11,14 @@ namespace LibraryShemotechnika.Elements.Active
         public double Voltage { get; set; }
         public List<Pin> Pins { get; private set; } // pin[0] -  pin[1] +
 
+        public double E
+        {
+            get
+            {
+                return Voltage;
+            }
+        }
+
         public IVS()
         {
             Pins = new List<Pin>(2) { new Pin(this), new Pin(this) };

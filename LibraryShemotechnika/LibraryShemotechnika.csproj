@@ -52,6 +52,7 @@
     <Compile Include="Elements\Exceptions\PinAlreadyUsedException.cs" />
     <Compile Include="Elements\Interfaces\IActiveElement.cs" />
     <Compile Include="Elements\Interfaces\IElementBase.cs" />
+    <Compile Include="Elements\Interfaces\IPassiveElement.cs" />
     <Compile Include="Elements\Other\DirectionAmperage.cs" />
     <Compile Include="Elements\Other\Pin.cs" />
     <Compile Include="Elements\Other\Branch.cs" />
