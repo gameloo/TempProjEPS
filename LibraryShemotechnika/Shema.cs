@@ -19,7 +19,7 @@ namespace LibraryShemotechnika
     {
         bool flag;
 
-        public Shema()
+        private void Test_Task_1()
         {
             var resistor_1 = new Resistor() { TESTSTRING = "R1", R = 25 };
             var resistor_2 = new Resistor() { TESTSTRING = "R2", R = 22 };
@@ -61,6 +61,55 @@ namespace LibraryShemotechnika
 
             var fi = FindNodesPotential(nodes, branches);
             CalculateAmperage(nodes, branches, fi);
+        }
+
+        private void Test_Task_2()
+        {
+            var resistor_1 = new Resistor() { TESTSTRING = "R1", R = 2 };
+            var resistor_2 = new Resistor() { TESTSTRING = "R2", R = 5.1 };
+            var resistor_3 = new Resistor() { TESTSTRING = "R3", R = 2.4 };
+            var resistor_4 = new Resistor() { TESTSTRING = "R4", R = 1 };
+            var resistor_5 = new Resistor() { TESTSTRING = "R5", R = 10 };
+            var resistor_6 = new Resistor() { TESTSTRING = "R6", R = 1 };
+            var ivs_1 = new IVS() { Voltage = 1.4 };
+            var ivs_2 = new IVS() { Voltage = 2.8 };
+            var node_1 = new Node() { Node_name = "Node_1" };
+            var node_2 = new Node() { Node_name = "Node_2" };
+            var node_3 = new Node() { Node_name = "Node_3" };
+            var node_4 = new Node() { Node_name = "Node_4" };
+
+            ivs_1[0].ConnectToPin(resistor_1[1]);
+
+            node_1.Connect(resistor_1[0]);
+            node_1.Connect(resistor_2[0]);
+            node_1.Connect(ivs_2[1]);
+
+            node_2.Connect(ivs_1[1]);
+            node_2.Connect(resistor_4[1]);
+            node_2.Connect(resistor_6[1]);
+
+            node_3.Connect(resistor_4[0]);
+            node_3.Connect(resistor_2[1]);
+            node_3.Connect(resistor_5[1]);
+
+            ivs_2[0].ConnectToPin(resistor_3[0]);
+
+            node_4.Connect(resistor_3[1]);
+            node_4.Connect(resistor_5[0]);
+            node_4.Connect(resistor_6[0]);
+
+            var nodes = new List<Node>();
+            var branches = new List<Branch>();
+            FindBranchesAndNodes(node_1, nodes, branches);
+
+            var fi = FindNodesPotential(nodes, branches);
+            CalculateAmperage(nodes, branches, fi);
+        }
+
+        public Shema()
+        {
+            Test_Task_1();
+            Test_Task_2();
         }
 
         /// <summary>

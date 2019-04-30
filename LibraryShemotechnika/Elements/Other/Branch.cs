@@ -44,7 +44,15 @@ namespace LibraryShemotechnika.Elements.Other
                 if (element.Equals(Node_1)) return Direction.N1toN2;
                 else return Direction.N2toN1;
             }
-            else return FindDirection(element.Pins[0].ConnectedPin.Element);
+            var e = element;
+            var passedE = new List<IElementBase>();
+            do
+            {
+                passedE.Add(e);
+                e = element.Pins.First(i => !passedE.Exists(j => j.Equals(i.ConnectedPin.Element))).ConnectedPin.Element;
+            } while (e is Node);
+            if (element.Equals(Node_1)) return Direction.N1toN2;
+            else return Direction.N2toN1;
         }
 
         public DirectionAmperage DirectionAmperage(Node node)
