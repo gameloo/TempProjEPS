@@ -9,5 +9,6 @@ namespace LibraryShemotechnika.Elements.Interfaces
     public interface IPassiveElement: IElementBase
     {
         double G { get; }
+        double I { get; set; }
     }
 }

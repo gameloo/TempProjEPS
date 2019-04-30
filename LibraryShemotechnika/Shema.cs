@@ -60,6 +60,7 @@ namespace LibraryShemotechnika
             FindBranchesAndNodes(node_1, nodes, branches);
 
             var fi = FindNodesPotential(nodes, branches);
+            CalculateAmperage(nodes, branches, fi);
         }
 
         /// <summary>
@@ -70,7 +71,7 @@ namespace LibraryShemotechnika
         /// <param name="retunedListBranches"></param>
         private void FindBranchesAndNodes(Node node, List<Node> retunedListNodes, List<Branch> retunedListBranches)
         {
-            var listPassedElements = new List<IElementBase>(); 
+            var listPassedElements = new List<IElementBase>();
             BruteForseScheme(node, retunedListNodes, listPassedElements, retunedListBranches);
         }
 
@@ -167,7 +168,7 @@ namespace LibraryShemotechnika
                             if (!branch.Node_1.Equals(nodesFhiZero))
                                 matrixA[nodes.IndexOf(node), nodes.IndexOf(branch.Node_1)] += branch.Direction == Direction.N1toN2 ? -1 * multipler * (element as IPassiveElement).G : multipler * (element as IPassiveElement).G;
                             if (!branch.Node_2.Equals(nodesFhiZero))
-                                matrixA[nodes.IndexOf(node), nodes.IndexOf(branch.Node_2)] += branch.Direction == Direction.N2toN1 ? -1 * multipler * (element as IPassiveElement).G :  multipler * (element as IPassiveElement).G;
+                                matrixA[nodes.IndexOf(node), nodes.IndexOf(branch.Node_2)] += branch.Direction == Direction.N2toN1 ? -1 * multipler * (element as IPassiveElement).G : multipler * (element as IPassiveElement).G;
                         }
                     }
                 }
@@ -178,6 +179,38 @@ namespace LibraryShemotechnika
         /* (Конец)
          * Поиск потенциалов узлов
         */
+
+        private void CalculateAmperage(List<Node> nodes, List<Branch> branches, double[] fi)
+        {
+            var _fi = new double[fi.Length + 1];
+            fi.CopyTo(_fi, 0);
+
+            foreach (var branch in branches)
+            {
+                var activeElement = branch.Elements.FirstOrDefault(i => i is IActiveElement);
+                double E = 0;
+                if (activeElement != null)
+                {
+                    E = (activeElement as IActiveElement).E;
+                }
+
+                foreach (var element in branch.Elements)
+                {
+                    if (element is IPassiveElement)
+                    {
+                        if (branch.Direction == Direction.N1toN2)
+                            (element as IPassiveElement).I = (_fi[nodes.IndexOf(branch.Node_1)] - _fi[nodes.IndexOf(branch.Node_2)] + E) * (element as IPassiveElement).G;
+                        else
+                            (element as IPassiveElement).I = (_fi[nodes.IndexOf(branch.Node_2)] - _fi[nodes.IndexOf(branch.Node_1)] + E) * (element as IPassiveElement).G;
+                    }
+                }
+
+            }
+
+
+        }
+
+
 
         public void Start()
         {

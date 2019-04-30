@@ -23,6 +23,8 @@ namespace LibraryShemotechnika.Elements
             }
         }
 
+        public double I { get; set; }
+
         public Resistor()
         {
             Pins = new List<Pin>(2) { new Pin(this), new Pin(this) };          
